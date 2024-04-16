@@ -39,7 +39,18 @@ const resolvers = {
         author(parent) {
             return db.authors.filter(a => a.id === parent.id )
         }
-    }
+    },
+    Mutation: {
+        deleteGame(_, args) {
+            return db.games.filter(g => g.id !== args.id)
+        },
+        deleteReview(_, args) {
+            return db.reviews.filter(r => r.id !== args.id)
+        },
+        deleteAuthor(_, args) {
+            return db.authors.filter(a => a.id !== args.id)
+        }
+    } 
 }
 
 const server = new ApolloServer({
