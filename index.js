@@ -49,6 +49,14 @@ const resolvers = {
         },
         deleteAuthor(_, args) {
             return db.authors.filter(a => a.id !== args.id)
+        },
+        addGame(_, args) {
+            let game = {
+                ...args.game, 
+                id: Math.floor(Math.random() * 10000).toString()
+            }
+            db.games.push(game)
+            return game
         }
     } 
 }
