@@ -28,11 +28,16 @@ export const typeDefs = `#graphql
     }
     type Mutation {
         addGame(game: AddGameInput!): Game
+        editGame(id: ID!, edits: EditGameInput): Game
         deleteGame(id: ID!): [Game]
         deleteReview(id: ID!): [Review]
         deleteAuthor(id: ID!): [Author]
     }
     input AddGameInput {
+        title: String!
+        platform: [String!]!
+    },
+    input EditGameInput {
         title: String!
         platform: [String!]!
     }
